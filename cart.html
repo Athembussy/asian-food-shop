@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF=8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Късче Азия - Азиатски хранителни продукти</title>
+    <link rel="icon" type="image/png" href="/img/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    
+    <section id="header">
+        <a href="index.html">
+            <img src="/img/logo.png" alt="Website Logo">
+        </a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">НАЧАЛО</a></li>
+                <li><a href="nudli.html">НУДЛИ</a></li>
+                <li><a href="jitni.html">ОРИЗ И ЖИТНИ</a></li>
+                <li><a href="napitki.html">НАПИТКИ И СОСОВЕ</a></li>
+                <li><a href="snakove.html">СЛАДОСТИ И СНАКОВЕ</a></li>
+                <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-x"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fa-solid fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="cart" class="section-p1">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Премахни</td>
+                    <td>Изображение</td>
+                    <td>Продукт</td>
+                    <td>Цена</td>
+                    <td>Количество</td>
+                    <td>Общо</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></i><a href="#"><i class="fa-regular fa-circle-xmark"></a></td>
+                    <td><img src="img/products/product1.jpg" alt=""></td>
+                    <td>Сладкиш във формата на яйце Lemanfen 188г</td>
+                    <td>32,25лв.</td>
+                    <td><input type="number" value="1"></td>
+                    <td>32,25лв.</td>
+                </tr>
+                <tr>
+                    <td></i><a href="#"><i class="fa-regular fa-circle-xmark"></a></td>
+                    <td><img src="img/products/product1.jpg" alt=""></td>
+                    <td>Сладкиш във формата на яйце Lemanfen 188г</td>
+                    <td>32,25лв.</td>
+                    <td><input type="number" value="1"></td>
+                    <td>32,25лв.</td>
+                </tr>
+                <tr>
+                    <td></i><a href="#"><i class="fa-regular fa-circle-xmark"></a></td>
+                    <td><img src="img/products/product1.jpg" alt=""></td>
+                    <td>Сладкиш във формата на яйце Lemanfen 188г</td>
+                    <td>32,25лв.</td>
+                    <td><input type="number" value="1"></td>
+                    <td>32,25лв.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Приложи код за отстъпка</h3>
+            <div>
+                <input type="text" id="promoCode" placeholder="Код за отстъпка">
+                <button class="normal" onclick="applyDiscount()">Приложи</button>
+                <button class="normal" onclick="removeDiscount()">Премахни</button>
+            </div>
+            <p id="discountMessage" style="color: green;"></p>
+        </div>
+
+        <div id="subtotal">
+            <h3>Общо в количката</h3>
+            <table>
+                <tr>
+                    <td>Общо</td>
+                    <td id="totalPrice">232</td>
+                </tr>
+                <tr>
+                    <td>Доставка</td>
+                    <td>Безплатна</td>
+                </tr>
+                <tr>
+                    <td><strong>Общо</strong></td>
+                    <td><strong id="finalPrice">232</strong> лв.</td>
+                </tr>
+            </table>
+            <a href="order.html" </a>
+            <button class="normal">Плащане</button>
+        </div>
+    </section>
+
+    <script>
+        let originalTotalPrice = parseFloat(document.getElementById("totalPrice").innerText);
+
+        function applyDiscount() {
+            let promoInput = document.getElementById("promoCode").value;
+            let finalPriceElement = document.getElementById("finalPrice");
+            let discountMessage = document.getElementById("discountMessage");
+
+            if (promoInput === "athempi","sausage") {
+                let discount = originalTotalPrice * 0.20;
+                let newTotal = originalTotalPrice - discount;
+                finalPriceElement.innerText = newTotal.toFixed(2);
+                discountMessage.innerText = "Отстъпката от 20% е приложена!";
+            } else {
+                discountMessage.innerText = "Невалиден код за отстъпка.";
+            }
+        }
+
+        function removeDiscount() {
+            document.getElementById("promoCode").value = "";
+            document.getElementById("finalPrice").innerText = originalTotalPrice.toFixed(2);
+            document.getElementById("discountMessage").innerText = "";
+        }
+    </script>
+
+</body>
+</html>
